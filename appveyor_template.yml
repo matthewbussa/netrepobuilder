@@ -6,7 +6,7 @@ build:
 notifications:
 - provider: Email
   to:
-  - mbussa@pillartechnology.com
+  - <<EMAIL_IS_REPLACED_HERE>>
   subject: 'Build {{status}}: {{repositoryName}}'
   message: >-
     <div style="font-family:'Segoe UI',Arial,Sans-Serif;font-size:10pt;">

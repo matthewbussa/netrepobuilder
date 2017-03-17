@@ -6,8 +6,10 @@ require 'uri'
 
 class AppVeyor
 
-  def initialize(project_name)
+  def initialize(project_name, email)
     @project_name = project_name
+    @email = email
+
     @api_token = ENV['APPVEYOR_API_KEY']
     @base_url = 'https://ci.appveyor.com/api'
     @header = {"Authorization" => "Bearer #{@api_token}",
@@ -43,7 +45,7 @@ class AppVeyor
     https = Net::HTTP.new(uri.host, uri.port)
     https.use_ssl = true
     request = Net::HTTP::Put.new(uri.path, @header_text)
-    request.body = File.read('template.yaml')
+    request.body = File.read('appveyor_template.yml').gsub!('<<EMAIL_IS_REPLACED_HERE>>', @email)
 
     https.request(request)
   end

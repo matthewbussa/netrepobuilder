@@ -11,8 +11,9 @@ end
 
 post '/repo/' do
   repo_name = params[:repo_name]
+  email = params[:email]
 
-  app = AppVeyor.new(repo_name)
+  app = AppVeyor.new(repo_name, email)
   response = app.setup_new_build
   result = response.code == "200" ? "successfully" : "not successfully"
 
