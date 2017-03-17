@@ -1,0 +1,20 @@
+version: 1.0.{build}
+before_build:
+- cmd: nuget restore
+build:
+  verbosity: minimal
+notifications:
+- provider: Email
+  to:
+  - mbussa@pillartechnology.com
+  subject: 'Build {{status}}: {{repositoryName}}'
+  message: >-
+    <div style="font-family:'Segoe UI',Arial,Sans-Serif;font-size:10pt;">
+        {{#passed}}
+        <h3 style="font-size: 150%;font-weight:normal; color:#078DC7;"><a href="{{buildUrl}}" style="color:#078DC7;">Build {{projectName}} {{buildVersion}} completed (Repo: {{repositoryName}})</a></h1>{{/passed}}
+        {{#failed}}
+        <h3 style="font-size: 150%;font-weight:normal; color:#ff3228;"><a href="{{buildUrl}}" style="color:#ff3228;">Build {{projectName}} {{buildVersion}} failed (Repo: {{repositoryName}})</a></h1>{{/failed}}
+    </div>
+  on_build_success: true
+  on_build_failure: true
+  on_build_status_changed: false
