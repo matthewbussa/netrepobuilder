@@ -1,4 +1,4 @@
-## Rep Builder
+## Repo Builder
 
 Needed the ability to build .NET projects but wanted to do so without the hassle of setting up a .NET environment, since my primary laptop is a Mac, thus Repo Builder was born.
 
