@@ -4,6 +4,10 @@
     </head>
 <body>
 
+<div id='flash'>
+  <div class='flash error'><center><%=flash[:error] %></center></div>
+</div>
+
 <h1><center>GitHub Repo Name</center></h1>
 
 <center>
@@ -12,7 +16,7 @@
       https://github.com/<input type="text" name="repo_name">
       <br/>
 
-      Email to send report to:
+      Email to send build log report to:
       <input type="email" name="email">
       <br/>
       <input type="submit">
