@@ -22,10 +22,10 @@
   <div class="col-md-6 col-md-offset-3 well">
       <form action="/repo/" method="POST">
         <div class="form-group">
-          <label for="repo_name">GitHub Repo Name</label>
-          <input type="text" class="form-control" name="repo_name" placeholder="username/repo name">
+          <label for="repo_url">Git Repository URL</label>
+          <input type="text" class="form-control" name="repo_url" placeholder="https://github.com/matthewbussa/netrepobuilder.git">
           <p id="repoNameHelpBlock" class="form-text text-muted">
-            Enter the part after https://www.github.com/
+            Enter the publicly accessible git clone URL
           </p>
         </div>
         <div class="form-group">
@@ -36,33 +36,12 @@
           </p>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-        <!-- <input type="submit"> -->
       </form>
 
     <p id="waitHelpBlock" class="form-text text-muted">
       *Once you click submit, it may take up to 30 seconds to finish.
     </p>
   </div>
-
-
-<!-- <center>
-  <form action="/repo/" method="POST">
-    <div class="form-group">
-      <label for="repo-name-input" class="col-2 col-form-label">GitHub Repo Name:</label>
-      https://github.com/<input class="form-control" type="text" value="" id="repo-name-input">
-    </div>
-
-    <div class="form-group">
-      <label for="email" class="col-2 col-form-label">Email</label>
-      <div class="col-10">
-        <input class="form-control" type="email" value="" id="email">
-      </div>
-    </div>
-
-      <input type="submit">
-  </form>
-</center> -->
-
 
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -72,7 +51,6 @@
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
 
 </body>
 

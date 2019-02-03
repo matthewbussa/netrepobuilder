@@ -6,8 +6,8 @@ require 'uri'
 
 class AppVeyor
 
-  def initialize(project_name, email)
-    @project_name = project_name
+  def initialize(project_url, email)
+    @project_url = project_url
     @email = email
 
     @api_token = ENV['APPVEYOR_API_KEY']
@@ -30,8 +30,8 @@ class AppVeyor
     https.use_ssl = true
     request = Net::HTTP::Post.new(uri.path, @header)
 
-    request.body = {"repositoryProvider" => "gitHub",
-      "repositoryName" => @project_name
+    request.body = {"repositoryProvider" => "git",
+      "repositoryName" => @project_url
     }.to_json
 
     response = https.request(request)
