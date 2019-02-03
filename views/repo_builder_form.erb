@@ -29,6 +29,13 @@
           </p>
         </div>
         <div class="form-group">
+          <label for="build_path">Relative path to build</label>
+          <input type="text" class="form-control" name="build_path" placeholder="./folder-containing-sln">
+          <p id="buildPathHelpBlock" class="form-text text-muted">
+            (Optional) Enter the relative path to the .sln or packages.config file. If left blank, the root of the project will be used.
+          </p>
+        </div>
+        <div class="form-group">
           <label for="email">Email</label>
           <input type="email" class="form-control form-control-sm" name="email" placeholder="you@example.com">
           <p id="emailHelpBlock" class="form-text text-muted">

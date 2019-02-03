@@ -11,10 +11,12 @@ end
 
 post '/repo/' do
   repo_url = params[:repo_url]
+  build_path = params[:build_path]
   email = params[:email]
 
   puts "Repo Name #{repo_url}"
   puts "Email #{email}"
+  puts "Build Path #{build_path}"
 
   validation_error_message = validate(repo_url, email)
 
@@ -27,7 +29,7 @@ post '/repo/' do
   success = "Build was sent to AppVeyor Successfully.  An email will be sent once the build is finished"
 
   begin
-    app = AppVeyor.new(repo_url, email)
+    app = AppVeyor.new(repo_url, build_path, email)
     response = app.setup_new_build
 
     if (response.code == "200")
