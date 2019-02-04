@@ -6,8 +6,9 @@ require 'uri'
 
 class AppVeyor
 
-  def initialize(project_name, email)
-    @project_name = project_name
+  def initialize(project_url, build_path, email)
+    @project_url = project_url
+    @build_path = build_path.to_s.empty? ? '.' : build_path
     @email = email
 
     @api_token = ENV['APPVEYOR_API_KEY']
@@ -30,8 +31,8 @@ class AppVeyor
     https.use_ssl = true
     request = Net::HTTP::Post.new(uri.path, @header)
 
-    request.body = {"repositoryProvider" => "gitHub",
-      "repositoryName" => @project_name
+    request.body = {"repositoryProvider" => "git",
+      "repositoryName" => @project_url
     }.to_json
 
     response = https.request(request)
@@ -45,7 +46,9 @@ class AppVeyor
     https = Net::HTTP.new(uri.host, uri.port)
     https.use_ssl = true
     request = Net::HTTP::Put.new(uri.path, @header_text)
-    request.body = File.read('appveyor_template.yml').gsub!('<<EMAIL_IS_REPLACED_HERE>>', @email)
+    request.body = File.read('appveyor_template.yml')
+      .gsub!('<<EMAIL_IS_REPLACED_HERE>>', @email)
+      .gsub!('<<BUILD_PATH_IS_REPLACED_HERE>>', @build_path)
 
     https.request(request)
   end
